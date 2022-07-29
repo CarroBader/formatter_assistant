@@ -38,7 +38,13 @@ def create_dict():
         default=False,
         action=argparse.BooleanOptionalAction,
     )
+    parser.add_argument(
+        '--every_other',
+        '-eo',
+        default=False,
+        action=argparse.BooleanOptionalAction,
+    )
 
     args = parser.parse_args()
-    get_create_dict(args.variable_name, args.sorted_lists)
+    get_create_dict(args.variable_name, args.sorted_lists, args.every_other)
     logger.info('Done')
