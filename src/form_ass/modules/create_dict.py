@@ -10,6 +10,10 @@ from src.form_ass.common import helpers, constants
 
 logger = logging.getLogger(__name__)
 
+unformated_dict = {}
+key_data = []
+value_data = []
+
 
 def get_create_dict(
     variable_name: str,
@@ -57,10 +61,6 @@ def get_create_dict(
 
 
 def format_sorted_lists(unread_data: list, variable_name: str) -> str:
-    unformated_dict = {}
-    key_data = []
-    value_data = []
-
     i = 0
     for data_row in unread_data:
         # Seperate the two lists with the blank row
@@ -75,8 +75,7 @@ def format_sorted_lists(unread_data: list, variable_name: str) -> str:
         elif i % 2 == 1:
             value_data.append(data_row.strip())
 
-    # Zip the lists to a dict
-    unformated_dict = dict(zip(key_data, value_data))
+    unformated_dict = helpers.create_dict(key_data, value_data)
 
     formatted_data = f'''{variable_name} = {unformated_dict}'''
 
@@ -84,10 +83,6 @@ def format_sorted_lists(unread_data: list, variable_name: str) -> str:
 
 
 def format_every_other(unread_data: list, variable_name: str) -> str:
-    unformated_dict = {}
-    key_data = []
-    value_data = []
-
     i = 0
     for data_row in unread_data:
         # Even become key
@@ -99,8 +94,7 @@ def format_every_other(unread_data: list, variable_name: str) -> str:
 
         i += 1
 
-    # Zip the lists to a dict
-    unformated_dict = dict(zip(key_data, value_data))
+    unformated_dict = helpers.create_dict(key_data, value_data)
 
     formatted_data = f'''{variable_name} = {unformated_dict}'''
 
