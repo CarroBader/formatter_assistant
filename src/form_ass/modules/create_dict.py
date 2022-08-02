@@ -19,6 +19,7 @@ def get_create_dict(
     variable_name: str,
     sorted_lists: bool,
     every_other: bool,
+    beside: bool,
 ):
     logger.info('Setting up variables')
     helpers.set_temp_dir_path()
@@ -48,6 +49,8 @@ def get_create_dict(
             formatted_data = format_sorted_lists(temp_data_file, variable_name)
         elif every_other:
             formatted_data = format_every_other(temp_data_file, variable_name)
+        elif beside:
+            formatted_data = format_beside(temp_data_file, variable_name)
 
         # Create and open file
         finishing_file = open(constants.PATH_NAME, 'w')
@@ -93,6 +96,32 @@ def format_every_other(unread_data: list, variable_name: str) -> str:
             value_data.append(data_row.strip())
 
         i += 1
+
+    unformated_dict = helpers.create_dict(key_data, value_data)
+
+    formatted_data = f'''{variable_name} = {unformated_dict}'''
+
+    return formatted_data
+
+
+def format_beside(unread_data: list, variable_name: str) -> str:
+
+    # i = 0
+    for data_row in unread_data:
+        print('data_row', data_row)
+        split_data_row = data_row.split(',')
+
+        key_data.append(split_data_row[0].strip())
+        value_data.append(split_data_row[1].strip())
+
+        # # Even become key
+        # if i % 2 == 0:
+        #     key_data.append(split_data_row)
+        # # Uneven become value
+        # elif i % 2 == 1:
+        #     value_data.append(split_data_row)
+
+        # i += 1
 
     unformated_dict = helpers.create_dict(key_data, value_data)
 

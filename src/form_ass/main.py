@@ -44,7 +44,14 @@ def create_dict():
         default=False,
         action=argparse.BooleanOptionalAction,
     )
-
+    parser.add_argument(
+        '--beside',
+        '-b',
+        default=False,
+        action=argparse.BooleanOptionalAction,
+    )
     args = parser.parse_args()
-    get_create_dict(args.variable_name, args.sorted_lists, args.every_other)
+    get_create_dict(
+        args.variable_name, args.sorted_lists, args.every_other, args.beside
+    )
     logger.info('Done')
