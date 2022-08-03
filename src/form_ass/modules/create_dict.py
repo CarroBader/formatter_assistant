@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 unformated_dict = {}
 key_data = []
 value_data = []
+sprint = []
 
 
 def get_create_dict(
@@ -112,7 +113,23 @@ def format_beside(unread_data: list, variable_name: str) -> str:
         split_data_row = data_row.split(',')
 
         key_data.append(split_data_row[0].strip())
-        value_data.append(split_data_row[1].strip())
+        # try:
+        #     f'{split_data_row[1].strip()} {split_data_row[2].strip()}'
+        # except IndexError:
+        #     print('IndexError: list index out of range')
+        #     key_data.append(split_data_row[1].strip())
+
+        if len(split_data_row) > 2:
+            value_data.append(
+                f'{split_data_row[1].strip()} {split_data_row[2].strip()}'
+            )
+        else:
+            value_data.append(split_data_row[1].strip())
+
+        # if split_data_row[2].strip():
+        #     sprint.append({'sprint': True})
+        # else:
+        #     sprint.append({'sprint': False})
 
         # # Even become key
         # if i % 2 == 0:
