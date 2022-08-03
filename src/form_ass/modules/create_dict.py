@@ -113,11 +113,6 @@ def format_beside(unread_data: list, variable_name: str) -> str:
         split_data_row = data_row.split(',')
 
         key_data.append(split_data_row[0].strip())
-        # try:
-        #     f'{split_data_row[1].strip()} {split_data_row[2].strip()}'
-        # except IndexError:
-        #     print('IndexError: list index out of range')
-        #     key_data.append(split_data_row[1].strip())
 
         if len(split_data_row) > 2:
             value_data.append(
@@ -125,20 +120,6 @@ def format_beside(unread_data: list, variable_name: str) -> str:
             )
         else:
             value_data.append(split_data_row[1].strip())
-
-        # if split_data_row[2].strip():
-        #     sprint.append({'sprint': True})
-        # else:
-        #     sprint.append({'sprint': False})
-
-        # # Even become key
-        # if i % 2 == 0:
-        #     key_data.append(split_data_row)
-        # # Uneven become value
-        # elif i % 2 == 1:
-        #     value_data.append(split_data_row)
-
-        # i += 1
 
     unformated_dict = helpers.create_dict(key_data, value_data)
 
