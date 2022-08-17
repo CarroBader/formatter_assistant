@@ -1,12 +1,18 @@
 #!/usr/bin/python3
 ''' Creates a array '''
 
+import os
+from dotenv import load_dotenv
 import logging
 import tempfile
 import subprocess
 
+load_dotenv()
+CURRENT_FOLDER_PATH = os.getenv("current_folder_path")
+PATH_NAME = os.getenv("path_name")
+
 # Local
-from src.form_ass.common import helpers, constants
+from src.form_ass.common import helpers
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +49,7 @@ def get_create_array(variable_name: str):
         formatted_data = f'''{variable_name} = {processed_data}'''
 
         # Create and open file
-        finishing_file = open(constants.PATH_NAME, 'w')
+        finishing_file = open(f'{CURRENT_FOLDER_PATH}{PATH_NAME}', 'w')
 
         logger.info('Writing the formatted data to file')
         # Write finishing_file to file
