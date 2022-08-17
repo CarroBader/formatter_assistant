@@ -90,7 +90,9 @@ create_dict --variable_name -sorted
 create_dict -vn -s
 ```
 
-This function take as an input the lists to be put un one on top of the other (that will be the keys), they should be separated with a space.
+This function take as an input two lists that should be separated with a space.
+The values in the first list becomes the keys of the dictionaries and
+the values in the second list becomes values in the dictionaries.
 
 INPUT:
 
@@ -131,7 +133,8 @@ create_dict --variable_name --every_other
 create_dict -vn -eo
 ```
 
-This function takes on list as an input where the value should be under the key.
+This function takes one list as an input the value on top becomes the keys of the dictionaries
+and the bottom value becomes values in the dictionaries.
 
 INPUT:
 
@@ -170,7 +173,9 @@ create_dict --variable_name --beside
 create_dict -vn -b
 ```
 
-This function takes on list as an input where the key and value should be on the same row separated by a comma, the key should be to the left.
+This function takes on list as an input where both values are on the same line separated by a comma.
+The values to the left becomes the keys of the dictionaries and
+the values to the right becomes values in the dictionaries.
 
 INPUT:
 
